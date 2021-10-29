@@ -1,9 +1,9 @@
 create_raid1(){
-    echo "yes" | mdadm  --create --verbose /dev/md0 --force --auto=yes --level=1 --raid-devices=2 /dev/sdd /dev/sde 
-    mkfs.ext4 -F /dev/md0
-    mkdir -p /mnt/md0
-    mount /dev/md0 /mnt/md0
-    echo '/dev/md0 /mnt/md0 ext4 defaults,nofail,discard 0 0' | sudo tee -a /etc/fstab
+    yes | mdadm --create --verbose /dev/md01 --level=1 --raid-devices=2 /dev/sdd /dev/sde
+    mkfs.ext4 -F /dev/md01
+    mkdir -p /mnt/md01
+    mount /dev/md01 /mnt/md01
+    echo '/dev/md01 /mnt/md01 ext4 defaults,nofail,discard 0 0' | sudo tee -a /etc/fstab
 }
 
 create_raid10(){
